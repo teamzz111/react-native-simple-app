@@ -1,34 +1,50 @@
-import React from 'react';
-import { StyleSheet, FlatList, ImageBackground, StatusBar } from 'react-native';
-import { Icon, Layout, ListItem, Button, TopNavigation, TopNavigationAction, Avatar } from '@ui-kitten/components';
-import CardList from '../components/cardList';
+import React, {useEffect, useState} from 'react';
+import { StyleSheet, FlatList, View, StatusBar } from 'react-native';
+import { Icon, Layout, TopNavigation, TopNavigationAction, Spinner } from '@ui-kitten/components';
+import CardItem from '../components/cardList';
+import { fetchData } from '../utils/utils';
 
 const BackIcon = (props) => (
   <Icon {...props} name='arrow-back'/>
 );
 
-const DATA = [{
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-];
+
 
 const List = ({navigation}) => {
-  const InstallButton = (props) => (
-    <Button size='tiny'>
-      INSTALL
-    </Button>
-  );
 
- 
+  const [loaded, setloaded] = useState(false);
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(2);
+  const [lazy, setLazy] = useState(false);
+
+  const getData = async() => {
+    const info = await fetchData.OpenGet("spain", "geo.gettopartists", 10, page);
+    if(info.ok){
+      setData(info.data['topartists']['artist']);
+    } else {
+      console.log(info)
+    }
+  }
+
+  const endReached = async () => {
+    setLazy(true);
+    const info = await fetchData.OpenGet("spain", "geo.gettopartists", 10, (page + 1));
+    setPage(page + 1);
+    if (info.ok) {
+      info.data['topartists']['artist'].map(e => {
+        data.push(e);
+      });
+    } else {
+      console.log(response.error);
+    }
+    setLazy(false);
+
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const renderBackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress = {() => navigation.goBack(null)}/>
   );
@@ -42,12 +58,20 @@ const List = ({navigation}) => {
         accessoryLeft={renderBackAction}
       />
       <FlatList
-        data={DATA}
+        data={data}
         renderItem={({ item }) => 
-          <CardList/>  
+          <CardItem {...item}/>  
         }
-        
+        keyExtractor={(item, index) => index.toString()}
+        onEndReached={endReached}
+        onEndReachedThreshold={0.1}
       />
+      {
+      lazy && 
+        <View style = {styles.spinner}>
+          <Spinner status = "success" size='giant'/>
+        </View>
+      }
 
     </Layout>
   );
@@ -57,8 +81,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    
   },
-    text: {
+  spinner: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    paddingVertical: 10,
+  },
+  text: {
     fontSize: 40,
     marginHorizontal: 10,
     marginBottom: 5,
