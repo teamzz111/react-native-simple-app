@@ -1,24 +1,28 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground, StatusBar } from 'react-native';
 import { Layout, Text } from '@ui-kitten/components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = () => (
     <Layout style = {styles.container} level='3'>
       <StatusBar barStyle="dark-content" backgroundColor={'#edf1f7'} />
-
       <Text category='h1' style = {styles.text}>GEO</Text>
       <Layout style={styles.topContainer}level='3' >
           <ImageBackground source={ require('../assets/artist.jpeg')} style={styles.image}   imageStyle={{ borderRadius: 8 }}>
-            <View style = {styles.overlay}>
-              <Text style = {styles.colorSub} category='c1'>Top List of</Text>
-              <Text style = {styles.colorSub} category='h4'>Artists</Text>
-            </View>
+            <TouchableOpacity>
+              <View style = {styles.overlay}>
+                <Text style = {styles.colorSub} category='c1'>Top List of</Text>
+                <Text style = {styles.colorSub} category='h4'>Artists</Text>
+              </View>
+            </TouchableOpacity>
           </ImageBackground>
           <ImageBackground source={ require('../assets/song.jpeg')} style={styles.image}   imageStyle={{ borderRadius: 8 }}>
-            <View style = {styles.overlay}>
-              <Text style = {styles.colorSub} category='c1'>Top List of</Text>
-              <Text style = {styles.colorSub} category='h4'>Tracks</Text>
-            </View>
+            <TouchableOpacity>
+              <View style = {styles.overlay}>
+                <Text style = {styles.colorSub} category='c1'>Top List of</Text>
+                <Text style = {styles.colorSub} category='h4'>Tracks</Text>
+              </View>
+            </TouchableOpacity>
           </ImageBackground>
       </Layout>
     </Layout>
