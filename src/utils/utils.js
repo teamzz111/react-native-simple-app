@@ -14,7 +14,7 @@ export const fetchData = {
 const createOkResponse = response => {
   return {
     ok: response.status === 200,
-    data: response.data.res,
+    data: response.data
   };
 };
 
