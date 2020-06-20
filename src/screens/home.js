@@ -4,7 +4,7 @@ import { Layout, Text } from '@ui-kitten/components';
 
 const Home = () => (
     <Layout style = {styles.container} level='3'>
-      <StatusBar barStyle="dark-content" backgroundColor={'white'} />
+      <StatusBar barStyle="dark-content" backgroundColor={'#edf1f7'} />
 
       <Text category='c1' style = {styles.text}>GEO</Text>
       <Layout style={styles.topContainer}level='3' >
