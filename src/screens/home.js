@@ -6,7 +6,7 @@ const Home = () => (
     <Layout style = {styles.container} level='3'>
       <StatusBar barStyle="dark-content" backgroundColor={'#edf1f7'} />
 
-      <Text category='c1' style = {styles.text}>GEO</Text>
+      <Text category='h1' style = {styles.text}>GEO</Text>
       <Layout style={styles.topContainer}level='3' >
           <ImageBackground source={ require('../assets/artist.jpeg')} style={styles.image}   imageStyle={{ borderRadius: 8 }}>
             <View style = {styles.overlay}>
@@ -35,8 +35,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(23,63,95,0.6)',
     padding: 30,
     borderRadius: 8
-
-
   },
   layout: {
     flex: 1,
@@ -60,9 +58,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
   },
   text: {
-    fontSize: 14,
+    fontSize: 40,
     marginHorizontal: 10,
-    marginBottom: 5
+    marginBottom: 5,
+    fontWeight: 'bold'
   },
   image: {
     width: '100%',
