@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, ScrollView } from "react-native";
-import { Text, Icon, Linking, Button, Layout, TopNavigation, TopNavigationAction, Avatar } from '@ui-kitten/components';
+import { StyleSheet, Linking, View, ScrollView } from "react-native";
+import { Text, Icon, Button, Layout, TopNavigation, TopNavigationAction, Avatar } from '@ui-kitten/components';
+
+/**
+ * 
+ * @param {route} routing - provide params to get
+ * @param  {navigation} navigation - function of navigate 
+ */
 
 const Details = ({route, navigation}) => {
   const infiniteAnimationIconRef = React.useRef();
