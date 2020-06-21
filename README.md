@@ -1,89 +1,56 @@
-# Título del Proyecto
+# Technical Test
 
-_Acá va un párrafo que describa lo que es el proyecto_
+App realizada con React Native
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+La arquitectura de la aplicación es la siguiente
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+[logo]: https://alotroladodeltelefonoblog.files.wordpress.com/2018/11/introduction-to-react-native-8-638.jpg?w=640 "Logo Title Text 2"
 
+Está dividida en las siguientes capas 
+
+1. Visual, se encuentran los contenedores de cada vista.
+2. Componentes, aquí se encuentran los elementos listos para ser reutilizados.
+3. Utils, en esta zona están las funciones que son útiles, por ejemplo la traída de datos de la api, en esta capa está network.
+4. Firebase, conexión con analytics, esta capa envía datos a firebase.
+5. sqlLite, en esta capa se tratan datos con almacenamiento offline
+6. Navegación, en esta capa se manejan los stacks y toda la navegación necesaria.
+
+La aplicación funciona tanto en vertical como horizontal.
+
+Se maneja KittenUI.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
-
 ```
-Da un ejemplo
+Android Studio
+React Native CLI
+Android SDK
+Node.js
+NPM 
+
 ```
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
 
 ```
-Da un ejemplo
+npm i
+npm run android
 ```
 
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
 ```
-Da un ejemplo
+Se manejan pruebas con JEST.JS 
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+Realizando despliegue, es necesario generar el apk firmado para ser instalado en cualquier aplicación.
 
 
 
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-
-
-
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
