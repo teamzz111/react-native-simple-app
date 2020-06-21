@@ -8,21 +8,24 @@ const BackIcon = (props) => (
   <Icon {...props} name='arrow-back'/>
 );
 
-const List = ({navigation}) => {
+const List = ({navigation, route}) => {
 
   const [loaded, setloaded] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(2);
   const [lazy, setLazy] = useState(false);
+  const [routeData, setR] = useState(route.params?.item);
 
   const getData = async() => {
-    const info = await fetchData.OpenGet("spain", "geo.gettopartists", 10, page);
+    const info = await fetchData.OpenGet("spain", routeData.function, 10, page);
     if(info.ok){
-      setData(info.data['topartists']['artist']);
+      setData(info.data[routeData.array.one][routeData.array.two]);
     } else {
-      console.log(info)
+      console.warn(info)
     }
   }
+
+  console.log(routeData)
 
 
   const endReached = async () => {
@@ -48,7 +51,7 @@ const List = ({navigation}) => {
   );
 
   const move = item => {
-    navigation.navigate("Details", {item});
+    navigation.navigate("Details", {item, id: routeData.id});
   }
 
   return (
@@ -56,7 +59,7 @@ const List = ({navigation}) => {
       <TopNavigation
         alignment='center'
         title='Top List of'
-        subtitle='Subtitle'
+        subtitle={routeData.title}
         accessoryLeft={renderBackAction}
       />
       <FlatList
@@ -77,6 +80,7 @@ const List = ({navigation}) => {
       }
 
     </Layout>
+    
   );
 }
 
