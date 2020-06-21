@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { Text, Icon, Linking, Button, Layout, TopNavigation, TopNavigationAction, Avatar } from '@ui-kitten/components';
 
 const Details = ({route, navigation}) => {
@@ -56,7 +56,7 @@ const Details = ({route, navigation}) => {
   };
 
   return(
-    <>
+    <ScrollView>
         <TopNavigation
           accessoryLeft={BackAction}
           title='Details'
@@ -147,7 +147,7 @@ const Details = ({route, navigation}) => {
             }
 
         </Layout>
-    </>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
