@@ -30,10 +30,10 @@ const List = ({navigation, route}) => {
 
   const endReached = async () => {
     setLazy(true);
-    const info = await fetchData.OpenGet("spain", "geo.gettopartists", 10, (page + 1));
+    const info = await fetchData.OpenGet("spain", routeData.function, 10, (page + 1));
     setPage(page + 1);
     if (info.ok) {
-      info.data['topartists']['artist'].map(e => {
+      info.data[routeData.array.one][routeData.array.two].map(e => {
         data.push(e);
       });
     } else {
