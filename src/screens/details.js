@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, ScrollView } from "react-native";
-import { Text, Icon, Linking, Button, Layout, TopNavigation, TopNavigationAction, Avatar } from '@ui-kitten/components';
+import { StyleSheet, Linking, View, ScrollView } from "react-native";
+import { Text, Icon, Button, Layout, TopNavigation, TopNavigationAction, Avatar } from '@ui-kitten/components';
 
 /**
  * 
