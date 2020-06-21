@@ -1,20 +1,36 @@
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry, Layout, Text } from '@ui-kitten/components';
 import { AppNavigator }  from './src/navigation/root';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { ToastAndroid, Platform } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
-const HomeScreen = () => (
-  <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-    <Text category='h1'>HOME</Text>
-  </Layout>
-);
+import NetInfo from '@react-native-community/netinfo';
 
-export default App = () => (
-  <ApplicationProvider {...eva} theme={eva.light}>
-    <IconRegistry icons={EvaIconsPack} />
+export default App = () => {
 
-    <AppNavigator/>
-  </ApplicationProvider>
-);
+  useEffect(() => {
+    NetInfo.fetch().then(async (state) => {
+      if(state.isConnected){
+        ToastAndroid.show('You are online', ToastAndroid.SHORT);
+        await AsyncStorage.setItem("online", "1");
+
+      } else {
+        ToastAndroid.show('You are offline', ToastAndroid.SHORT);
+        await AsyncStorage.setItem('online', "0");
+
+      }
+    });
+
+  }, []);
+
+  return(
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <IconRegistry icons={EvaIconsPack} />
+
+        <AppNavigator/>
+      </ApplicationProvider>
+    );
+};
