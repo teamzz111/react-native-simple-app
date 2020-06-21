@@ -8,8 +8,6 @@ const BackIcon = (props) => (
   <Icon {...props} name='arrow-back'/>
 );
 
-
-
 const List = ({navigation}) => {
 
   const [loaded, setloaded] = useState(false);
@@ -26,6 +24,7 @@ const List = ({navigation}) => {
     }
   }
 
+
   const endReached = async () => {
     setLazy(true);
     const info = await fetchData.OpenGet("spain", "geo.gettopartists", 10, (page + 1));
@@ -38,7 +37,6 @@ const List = ({navigation}) => {
       console.log(response.error);
     }
     setLazy(false);
-
   };
 
   useEffect(() => {
@@ -48,6 +46,10 @@ const List = ({navigation}) => {
   const renderBackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress = {() => navigation.goBack(null)}/>
   );
+
+  const move = item => {
+    navigation.navigate("Details", {item});
+  }
 
   return (
     <Layout style={styles.container} level='3'>
@@ -60,8 +62,9 @@ const List = ({navigation}) => {
       <FlatList
         data={data}
         renderItem={({ item }) => 
-          <CardItem {...item}/>  
+          <CardItem item = {item}  handleDetails = {() => move(item)}/>  
         }
+
         keyExtractor={(item, index) => index.toString()}
         onEndReached={endReached}
         onEndReachedThreshold={0.1}
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    
+    justifyContent: 'center',
   },
   spinner: {
     justifyContent: 'center',

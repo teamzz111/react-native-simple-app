@@ -1,23 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, StyleSheet } from 'react-native';
 import {Icon, Card, Text } from '@ui-kitten/components';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
-const CardItem = (item) => {
+const CardItem = ({item, handleDetails}) => {
+
+  useEffect(() => {
+  }, []);
 
   const format = (n) => {
     return String(n).replace(/(.)(?=(\d{3})+$)/g, '$1,')
   }
 
-  const Header = (props) => (
-    <View {...props}>
-
-    </View>
-  );
 
   return(
-    <View style = {{marginTop: 1, padding: 10}}>
+    <ScrollView style = {{marginTop: 1, padding: 10, paddingHorizontal: 25}}>
       <Card status='success' style = {styles.container}>
-        <View style ={styles.flex}>
+        <TouchableOpacity style ={styles.flex} onPress = {() => handleDetails()} >
           <View style = {{width: "94%"}}>
             <Text category='h5'>{item.name}</Text>
             <View style = {styles.listeners}>
@@ -31,9 +30,9 @@ const CardItem = (item) => {
               name='arrow-ios-forward-outline'
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </Card>
-    </View>
+    </ScrollView>
   )
 
 }
