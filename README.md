@@ -21,6 +21,9 @@ La aplicación funciona tanto en vertical como horizontal.
 
 Se maneja KittenUI.
 
+[logo]: https://srv-file14.gofile.io/download/F33XE4/Screen%20Shot%202020-06-21%20at%205.15.16%20PM.png
+ "Logo Title Text 2"
+
 ### Pre-requisitos 📋
 
 ```
