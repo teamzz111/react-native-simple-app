@@ -6,7 +6,7 @@ App realizada con React Native
 
 La arquitectura de la aplicación es la siguiente
 
-[logo]: https://alotroladodeltelefonoblog.files.wordpress.com/2018/11/introduction-to-react-native-8-638.jpg?w=640 "Logo Title Text 2"
+  <img width="400" height="200" src="https://www.reactnative.guide/assets/images/rn-architecture.png">
 
 Está dividida en las siguientes capas 
 
