@@ -3,6 +3,13 @@ import { View, StyleSheet } from 'react-native';
 import {Icon, Card, Text } from '@ui-kitten/components';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
+/**
+ * 
+ * @param {array} item - with data of navigation
+ * @param {function} handleDetails - function to navigate to details of song/track 
+ */
+
+
 const CardItem = ({item, handleDetails}) => {
 
   useEffect(() => {
@@ -11,6 +18,7 @@ const CardItem = ({item, handleDetails}) => {
   const format = (n) => {
     return String(n).replace(/(.)(?=(\d{3})+$)/g, '$1,')
   }
+
 
 
   return(

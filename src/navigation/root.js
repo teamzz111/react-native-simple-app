@@ -8,6 +8,11 @@ import Details from '../screens/details';
 
 const Stack = createStackNavigator();
 
+/**
+ * Represents a root navigation.
+ * @AppNavigator
+ */
+
 export const AppNavigator = () => (
     <NavigationContainer>
       <Stack.Navigator>
