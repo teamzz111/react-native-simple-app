@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ImageBackground, StatusBar, FlatList } from 'react-native';
 import { Layout, Text } from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { addAnalytics } from '../firebase/firebase';
 
 const elements = [{
   img: require('../assets/artist.jpeg'),
@@ -26,6 +27,7 @@ const elements = [{
 const Home = ({navigation}) => {
 
     const navigate = (item) => {
+      addAnalytics(item.id, item.title);
       navigation.navigate("List", {item})
     }
     return(
