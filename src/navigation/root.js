@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../screens/home';
 import List from '../screens/list';
+import Details from '../screens/details';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,11 @@ export const AppNavigator = () => (
           }}
         />
         <Stack.Screen name="List" component={List}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen name="Details" component={Details}
           options={{
             headerShown: false,
           }}
