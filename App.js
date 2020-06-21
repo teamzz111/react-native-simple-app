@@ -5,20 +5,21 @@ import { ApplicationProvider, IconRegistry, Layout, Text } from '@ui-kitten/comp
 import { AppNavigator }  from './src/navigation/root';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { ToastAndroid, Platform } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import NetInfo from '@react-native-community/netinfo';
 
 export default App = () => {
 
   useEffect(() => {
-    NetInfo.fetch().then((state) => {
-      console.log('Connection type', state.type);
-      console.log('Is connected?', state.isConnected);
+    NetInfo.fetch().then(async (state) => {
       if(state.isConnected){
         ToastAndroid.show('You are online', ToastAndroid.SHORT);
+        await AsyncStorage.setItem("online", "1");
 
       } else {
         ToastAndroid.show('You are offline', ToastAndroid.SHORT);
+        await AsyncStorage.setItem('online', "0");
 
       }
     });
