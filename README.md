@@ -1,4 +1,4 @@
-# Technical Test
+# Ejemplo simple de una aplicación en React Native
 
 App realizada con React Native
 
